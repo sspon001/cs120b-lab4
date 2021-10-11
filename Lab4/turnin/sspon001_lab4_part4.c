@@ -28,9 +28,9 @@ void Tick(){
 			else state = unlockY;
 			break ;
 		case unlockY:
-			if((PINA & 0x07) == 0x02 && ((PORTB & 0x01) == 0x01) state = lock ;
+			if((PINA & 0x07) == 0x02 && (PORTB & 0x01) == 0x01) state = lock ;
 			else if((PINA == 0x07) == 0x02) state = unlockYRelease ;
-			else if((PINA == 0x00) state = unlockY ;
+			else if(PINA == 0x00) state = unlockY ;
 			else state = init ;
 			break ;
 		case unlockYRelease:
@@ -39,7 +39,7 @@ void Tick(){
 			break ;
 		case lock:
 			if((PINA & 0x87) == 0x80) state = lock ; 
-			else if((PINA & 0x07) == 0x02) state = lock
+			else if((PINA & 0x07) == 0x02) state = lock ;
 			else state = init ;
 			break ;
 	}
